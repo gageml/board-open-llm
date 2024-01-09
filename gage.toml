@@ -1,0 +1,9 @@
+[open-llm-import]
+
+exec = "python import_results.py"
+description = "Import model results from the Open LLM Leaderboard"
+sourcecode = [
+    "import_results.py",
+    "gage.toml"
+]
+config = "import_results.py#model"

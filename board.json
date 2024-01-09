@@ -1,0 +1,53 @@
+{
+  "title": "Open LLM Leaderboard",
+  "description": "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp).",
+  "columns": [
+    {
+      "run-attr": "id",
+      "headerName": "Run ID",
+      "hide": true
+    },
+    {
+      "run-attr": "status",
+      "headerName": "Run Status",
+      "hide": true
+    },
+    {
+      "run-attr": "operation",
+      "hide": true
+    },
+    {
+      "attribute": "model"
+    },
+    {
+      "attribute": "precision"
+    },
+    {
+      "attribute": "params",
+      "filter": "agNumberColumnFilter",
+      "filterParams": {
+        "defaultOption": "inRange",
+        "filterOptions": ["greaterThan", "lessThan", "inRange", "equals"]
+      }
+    },
+    {
+      "metric": "arc",
+      "sort": "desc"
+    },
+    {
+      "metric": "hellaswag"
+    },
+    {
+      "metric": "mmlu"
+    },
+    {
+      "metric": "truthfulqa"
+    },
+    {
+      "metric": "winogrande"
+    },
+    {
+      "metric": "gsm8k"
+    }
+  ]
+}
