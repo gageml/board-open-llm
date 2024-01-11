@@ -1,6 +1,10 @@
 {
   "title": "Open LLM Leaderboard",
   "description": "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp).",
+  "runs-select": {
+    "operation": "open-llm-import",
+    "status": "completed"
+  },
   "columns": [
     {
       "run-attr": "id",
@@ -20,7 +24,8 @@
       "attribute": "model"
     },
     {
-      "attribute": "precision"
+      "attribute": "precision",
+      "hide": true
     },
     {
       "attribute": "params",
@@ -28,7 +33,8 @@
       "filterParams": {
         "defaultOption": "inRange",
         "filterOptions": ["greaterThan", "lessThan", "inRange", "equals"]
-      }
+      },
+      "hide": true
     },
     {
       "metric": "arc",

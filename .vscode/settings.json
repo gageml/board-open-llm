@@ -1,13 +1,15 @@
 {
-    "cSpell.words": [
-        "dtype",
-        "hellaswag",
-        "hendrycks",
-        "Leaderboard",
-        "levelname",
-        "mmlu",
-        "scandir",
-        "truthfulqa",
-        "winogrande"
-    ]
+  "cSpell.words": [
+    "dtype",
+    "hellaswag",
+    "hendrycks",
+    "Leaderboard",
+    "levelname",
+    "mmlu",
+    "RCLONE",
+    "scandir",
+    "truthfulqa",
+    "winogrande"
+  ],
+  "git.ignoreLimitWarning": true
 }
