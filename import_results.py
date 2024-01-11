@@ -3,6 +3,7 @@ import glob
 import json
 import logging
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -13,8 +14,14 @@ logging.basicConfig(
 )
 log = logging.getLogger()
 
+
+RESULT_FILENAME_P = re.compile(
+    r"results_(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}\.\d+).json$"
+)
+
 OPEN_LLM_RESULTS_REPO = "https://huggingface.co/datasets/open-llm-leaderboard/results"
 default_repo_dir = os.path.join(tempfile.gettempdir(), "open-llm-leaderboard")
+
 model = None
 
 
@@ -92,19 +99,37 @@ def _run(cmd, cwd=None, env=None):
 
 
 def _show_models_and_exit(args):
-    for model in sorted(_iter_models(args)):
-        print(model)
+    for model, result in sorted(_iter_models(args)):
+        print(model, result)
     raise SystemExit(0)
 
 
 def _iter_models(args):
     for root, dirs, files in os.walk(args.repo_dir):
-        if _model_leaf(dirs, files):
-            yield os.path.relpath(root, args.repo_dir)
+        latest_eval = _latest_eval_for_dir(files, root)
+        if latest_eval:
+            yield _model_name_for_dir(root, args.repo_dir), latest_eval
 
 
-def _model_leaf(dirs, files):
-    return not dirs and files and files[0].endswith(".json")
+def _latest_eval_for_dir(files, root):
+    eval_results = sorted([name for name in files if name.endswith(".json")])
+    if not eval_results:
+        return None
+    latest = eval_results[-1]
+    m = RESULT_FILENAME_P.match(latest)
+    if not m:
+        if os.getenv("DEBUG"):
+            log.warning(
+                'Unexpected eval result file "%s" in "%s", skipping',
+                latest,
+                root,
+            )
+        return None
+    return m.group(1)
+
+
+def _model_name_for_dir(dir, repo_dir_root):
+    return os.path.relpath(dir, repo_dir_root)
 
 
 def _model_summary(args):
