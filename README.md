@@ -40,6 +40,18 @@ Requirements:
 - [Rclone](https://rclone.org/install/)
 - Credentials to publish the board
 
+Once RClone is installed, create a remote:
+
+```shell
+rclone config create gage s3 provider=CloudFlare endpoint=https://d5f5a59ff84ba96f4eba7a056261fd17.r2.cloudflarestorage.com acl=private
+```
+
+Verify that the `gage` remote is created:
+
+```shell
+rclone config show gage
+```
+
 Obtain the credentials to publish the board to Gage and load them into
 the environment.
 
