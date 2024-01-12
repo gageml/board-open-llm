@@ -1,8 +1,11 @@
+import argparse
 import datetime
 import logging
 import subprocess
 
 import gage
+
+preview = False
 
 logging.basicConfig(
     level=logging.INFO,
@@ -12,10 +15,22 @@ log = logging.getLogger()
 
 
 def main():
+    args = _parse_args()
     models = _evaluated_models()
     runs = _latest_model_runs(models)
     for model in _iter_stale_models(models, runs):
-        _import_results(model)
+        _import_results(model, args)
+
+
+def _parse_args():
+    p = argparse.ArgumentParser()
+    p.add_argument(
+        "--preview",
+        help="show models without importing them",
+        action="store_true",
+        default=preview,
+    )
+    return p.parse_args()
 
 
 def _evaluated_models():
@@ -80,7 +95,10 @@ def _run_started_utc(run):
     return datetime.datetime.utcfromtimestamp(started_utc.timestamp())
 
 
-def _import_results(model):
+def _import_results(model, args):
+    if args.preview:
+        log.info("Will import results for %s", model)
+        return
     log.info("Importing results for %s", model)
     try:
         subprocess.check_output(

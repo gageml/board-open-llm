@@ -15,6 +15,7 @@ sourcecode = [
     "import_results.py",
     "import_batch.py"
 ]
+config = "import_batch.py#preview"
 
 [publish]
 
