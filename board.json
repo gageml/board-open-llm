@@ -1,9 +1,13 @@
 {
   "title": "Open LLM Leaderboard",
   "description": "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp).",
-  "runs-select": {
+  "run-select": {
     "operation": "open-llm-import",
-    "status": "completed"
+    "status": "completed",
+    "group": {
+      "attribute": "model",
+      "started": "last"
+    }
   },
   "columns": [
     {
