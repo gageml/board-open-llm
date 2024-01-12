@@ -2,26 +2,24 @@
 
 exec = "python import_results.py"
 description = "Import model results from the Open LLM Leaderboard"
-sourcecode = [
-    "import_results.py"
-]
+sourcecode = ["import_results.py"]
 config = "import_results.py#model"
 
 [open-llm-import-batch]
 
 exec = "python import_batch.py"
 description = "Import Open LLM model results as a batch"
-sourcecode = [
-    "import_results.py",
-    "import_batch.py"
-]
+sourcecode = ["import_results.py", "import_batch.py"]
 config = "import_batch.py#preview"
 
 [publish]
 
 exec = "python publish.py"
 description = "Publish board to Gage Live"
-sourcecode = [
-    "publish.py",
-    "board.json"
+sourcecode = ["publish.py", "board.json"]
+config = [
+    "publish.py#remote",
+    "#bucket",
+    "#board_key",
+    "#test_credentials",
 ]
