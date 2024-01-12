@@ -7,6 +7,7 @@
     "Leaderboard",
     "levelname",
     "mmlu",
+    "nuon",
     "RCLONE",
     "scandir",
     "truthfulqa",

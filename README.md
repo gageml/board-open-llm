@@ -7,34 +7,71 @@ Model eval results are imported using the Gage `open-llm-import`
 operation. Install [Gage](https://github.com/gageml/gage) if you haven't
 already.
 
-Import a model:
+### Import a Single Model
+
+To import a single model (e.g. for testing), run the `open-llm-import`
+Gage operation.
 
 ```shell
-gage run open-llm-import model=<model>
+gage run open-llm-import-batch
 ```
 
-To list available models, visit the
-[leaderboard](http://tinyurl.com/2l5uspcp) or use the local Python
-script [`import_results.py`](import_results.py).
+To list available models, run `import_results.py` directly with the
+`--list-models` option.
 
 ```shell
 python import_results.py --list-models
 ```
 
-View the latest import results using `gage show`:
+### Import All Models
+
+To import all models, run `open-llm-import-batch`.
 
 ```shell
-gage show
+gage run open-llm-import model=<model>
 ```
 
-View the latest import for a particular model using a `--where` filter:
+Subsequent runs only import new results.
+
+### Publish Open LLM Board
+
+Requirements:
+
+- [Rclone](https://rclone.org/install/)
+- Credentials to publish the board
+
+Obtain the credentials to publish the board to Gage and load them into
+the environment.
+
+In bash (or compatible):
 
 ```shell
-gage show --where <model>
+source <(gpg -d <credentials.gpg)
 ```
 
-Generate a Gage board definition:
+In Nushell:
+
+```nu
+load-env (gpg -d credentials.nuon.gpg | from nuon)
+```
+
+Run the `publish` Gage operation. It's a good idea to test credentials
+first.
+
+With credential test only (does not publish):
 
 ```shell
-gage board --json --config board.json
+gage run publish test_credentials=true
 ```
+
+If the credentials are okay, publish the board:
+
+```shell
+gage run publish test_credentials=true
+```
+
+### View Board
+
+To view the published board, visit:
+
+<https://gage-live.garrett-d5f.workers.dev/open-llm>
