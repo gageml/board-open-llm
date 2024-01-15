@@ -8,13 +8,18 @@ status = "completed"
 
 [group-select]
 
-group-by = {attribute = "model"}
-max = {run-attr = "started" }
+group-by = { attribute = "model" }
+max = { run-attr = "started" }
 
 [[columns]]
 
 run-attr = "id"
 label = "Run ID"
+hide = true
+
+[[columns]]
+
+run-attr = "operation"
 hide = true
 
 [[columns]]
@@ -25,12 +30,13 @@ hide = true
 
 [[columns]]
 
-run-attr = "operation"
-hide = true
-
-[[columns]]
-
 attribute = "model"
+
+[[columns.links]]
+
+href = "https://huggingface.co/$1"
+label = "Hugging Face Model Card"
+type = "model"
 
 [[columns]]
 
@@ -60,15 +66,17 @@ is specially hard for state-of-the-art models, though its questions
 are trivial for humans (>95% accuracy).
 """
 
-# TODO - how to spell links here?
+[[columns.links]]
 
-    #   "links": [
-    #     ["https://paperswithcode.com/dataset/hellaswag", "Dataset"],
-    #     [
-    #       "https://paperswithcode.com/paper/hellaswag-can-a-machine-really-finish-your",
-    #       "Paper"
-    #     ]
-    #   ]
+href = "https://paperswithcode.com/dataset/hellaswag"
+label = "Dataset"
+type = "dataset"
+
+[[columns.links]]
+
+href = "https://paperswithcode.com/paper/hellaswag-can-a-machine-really-finish-your"
+label = "Paper"
+type = "paper"
 
 [[columns]]
 
