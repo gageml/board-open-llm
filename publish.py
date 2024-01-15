@@ -13,6 +13,7 @@ remote = "gage"
 bucket = "gage-boards"
 board_key = "open-llm"
 test_credentials = False
+skip_copy = False
 
 target_obj = f"{remote}:{bucket}/{board_key}.json"
 
@@ -43,6 +44,8 @@ def _check_rclone():
 
 
 def _check_credentials():
+    if skip_copy and not test_credentials:
+        return
     log.info("Checking remote credentials")
     try:
         subprocess.run(
@@ -79,6 +82,8 @@ def _save_board(board):
 
 
 def _publish_board():
+    if skip_copy:
+        return
     log.info("Publishing board to %s", target_obj)
     try:
         subprocess.run(

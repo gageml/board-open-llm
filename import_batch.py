@@ -78,7 +78,7 @@ def _latest_model_runs(models):
 def _open_llm_import_runs():
     return gage.runs(
         filter=lambda run: (
-            run["operation"] == "open-llm-import" and run["status"] == "completed"
+            run["operation"] == "eval-model" and run["status"] == "completed"
         )
     )
 
@@ -102,7 +102,7 @@ def _import_results(model, args):
     log.info("Importing results for %s", model)
     try:
         subprocess.check_output(
-            f"gage run open-llm-import model='{model}' -y",
+            f"gage run eval-model model='{model}' -y",
             shell=True,
             text=True,
             stderr=subprocess.STDOUT,

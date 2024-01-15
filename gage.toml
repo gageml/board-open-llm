@@ -1,14 +1,14 @@
-[open-llm-import]
+[eval-model]
 
 exec = "python import_results.py"
 description = "Import model results from the Open LLM Leaderboard"
 sourcecode = ["import_results.py"]
 config = "import_results.py#model"
 
-[open-llm-import-batch]
+[eval-all]
 
 exec = "python import_batch.py"
-description = "Import Open LLM model results as a batch"
+description = "Import all available Open LLM model results"
 sourcecode = ["import_results.py", "import_batch.py"]
 config = "import_batch.py#preview"
 
@@ -18,8 +18,6 @@ exec = "python publish.py"
 description = "Publish board to Gage Live"
 sourcecode = ["publish.py", "board.json"]
 config = [
-    "publish.py#remote",
-    "#bucket",
-    "#board_key",
-    "#test_credentials",
+    "publish.py",
+    "-#DATA_JSON"
 ]

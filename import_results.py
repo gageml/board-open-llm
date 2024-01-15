@@ -190,15 +190,8 @@ def _results_attributes(model, config, precision):
             "value": model,
             "type": "hf:model",
         },
-        "precision": {
-            "value": precision,
-            "type": "hf:open-llm/precision",
-        },
-        "params": {
-            "value": _model_params_b(config),
-            "type": "hf:open-llm/params",
-            "label": "Params (B)",
-        },
+        "precision": precision,
+        "params": _model_params_b(config),
     }
 
 
@@ -232,11 +225,7 @@ def _results_metrics(results):
 def _apply_arc(results, metrics):
     val = _results_val(results, "harness|arc:challenge", "acc_norm")
     if val:
-        metrics["arc"] = {
-            "value": val,
-            "label": "ARC",
-            "type": "hf:open-llm/arc",
-        }
+        metrics["arc"] = val
 
 
 def _results_val(results, startswith, val_key):
@@ -253,51 +242,31 @@ def _results_val(results, startswith, val_key):
 def _apply_hellaswag(results, metrics):
     val = _results_val(results, "harness|hellaswag", "acc_norm")
     if val is not None:
-        metrics["hellaswag"] = {
-            "value": val,
-            "label": "HellaSwag",
-            "type": "hf:open-llm/hellaswag",
-        }
+        metrics["hellaswag"] = val
 
 
 def _apply_mmlu(results, metrics):
     val = _results_val(results, "harness|hendrycksTest-", "acc")
     if val:
-        metrics["mmlu"] = {
-            "value": val,
-            "label": "MMLU",
-            "type": "hf:open-llm/mmlu",
-        }
+        metrics["mmlu"] = val
 
 
 def _apply_truthfulqa(results, metrics):
     val = _results_val(results, "harness|truthfulqa:mc", "mc2")
     if val:
-        metrics["truthfulqa"] = {
-            "value": val,
-            "label": "TruthfulQA",
-            "type": "hf:open-llm/truthfulqa",
-        }
+        metrics["truthfulqa"] = val
 
 
 def _apply_winogrande(results, metrics):
     val = _results_val(results, "harness|winogrande", "acc")
     if val:
-        metrics["winogrande"] = {
-            "value": val,
-            "label": "Winogrande",
-            "type": "hf:open-llm/winogrande",
-        }
+        metrics["winogrande"] = val
 
 
 def _apply_gsm8k(results, metrics):
     val = _results_val(results, "harness|gsm8k", "acc")
     if val:
-        metrics["gsm8k"] = {
-            "value": val,
-            "label": "GSM8K",
-            "type": "hf:open-llm/gsm8k",
-        }
+        metrics["gsm8k"] = val
 
 
 def _apply_dict(src, dest):

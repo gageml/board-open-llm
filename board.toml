@@ -1,0 +1,91 @@
+title = "Open LLM Leaderboard"
+description = "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp)."
+
+[run-select]
+
+operation = "eval-model"
+status = "completed"
+
+[group-select]
+
+group-by = {attribute = "model"}
+max = {run-attr = "started" }
+
+[[columns]]
+
+run-attr = "id"
+label = "Run ID"
+hide = true
+
+[[columns]]
+
+run-attr = "status"
+label = "Run Status"
+hide = true
+
+[[columns]]
+
+run-attr = "operation"
+hide = true
+
+[[columns]]
+
+attribute = "model"
+
+[[columns]]
+
+attribute = "precision"
+hide = true
+
+[[columns]]
+
+attribute = "params"
+label = "Params (B)"
+filter = "range"
+hide = true
+
+[[columns]]
+
+metric = "arc"
+label = "ARC"
+sort = "desc"
+
+[[columns]]
+
+metric = "hellaswag"
+label = "HellaSwag"
+description = """
+HellaSwag is a challenge dataset for evaluating commonsense NLI that
+is specially hard for state-of-the-art models, though its questions
+are trivial for humans (>95% accuracy).
+"""
+
+# TODO - how to spell links here?
+
+    #   "links": [
+    #     ["https://paperswithcode.com/dataset/hellaswag", "Dataset"],
+    #     [
+    #       "https://paperswithcode.com/paper/hellaswag-can-a-machine-really-finish-your",
+    #       "Paper"
+    #     ]
+    #   ]
+
+[[columns]]
+
+metric = "mmlu"
+label = "MMLU"
+
+[[columns]]
+
+metric = "truthfulqa"
+label = "TruthfulQA"
+
+[[columns]]
+
+metric = "winogrande"
+label = "Winogrande"
+
+[[columns]]
+
+metric = "gsm8k"
+label = "GSM8K"
