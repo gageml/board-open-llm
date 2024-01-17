@@ -1,11 +1,11 @@
-[eval-model]
+[import]
 
 exec = "python import_results.py"
 description = "Import model results from the Open LLM Leaderboard"
 sourcecode = ["import_results.py"]
 config = "import_results.py#model"
 
-[eval-all]
+[import-all]
 
 exec = "python import_batch.py"
 description = "Import all available Open LLM model results"
