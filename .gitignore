@@ -1,4 +1,5 @@
 *.pyc
 .gage
 summary.json
+results_*.json
 data.json
