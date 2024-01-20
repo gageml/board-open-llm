@@ -1,16 +1,16 @@
 [import]
 
-exec = "python import_results.py"
+exec = "python import_results.py --data-path ."
 description = "Import model results from the Open LLM Leaderboard"
 sourcecode = ["import_results.py"]
 config = "import_results.py#model"
 
-[import-all]
+[batch]
 
 exec = "python import_batch.py"
 description = "Import all available Open LLM model results"
 sourcecode = ["import_results.py", "import_batch.py"]
-config = "import_batch.py#preview"
+config = ["import_batch.py#preview", "#limit"]
 
 [publish]
 

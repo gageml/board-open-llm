@@ -2,13 +2,16 @@
   "cSpell.words": [
     "copyto",
     "dtype",
+    "evals",
     "hellaswag",
     "hendrycks",
     "Leaderboard",
     "levelname",
     "mmlu",
     "nuon",
+    "pprint",
     "RCLONE",
+    "safetensors",
     "scandir",
     "truthfulqa",
     "winogrande"

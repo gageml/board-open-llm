@@ -3,7 +3,7 @@ description = "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2
 
 [run-select]
 
-operation = "eval-model"
+operation = "import"
 status = "completed"
 
 [group-select]
@@ -58,6 +58,13 @@ hide = true
 attribute = "params"
 label = "Params (B)"
 filter = "range"
+hide = true
+
+[[columns]]
+
+attribute = "is-merged"
+label = "Merged"
+type = "boolean"
 hide = true
 
 [[columns]]

@@ -1,10 +1,12 @@
 import argparse
+from curses import meta
 import datetime
 import logging
 import subprocess
 
 import gage
 
+limit = None
 preview = False
 
 logging.basicConfig(
@@ -24,6 +26,13 @@ def main():
 
 def _parse_args():
     p = argparse.ArgumentParser()
+    p.add_argument(
+        "--limit",
+        metavar="N",
+        help="Limit batch to N models",
+        type=int,
+        default=limit,
+    )
     p.add_argument(
         "--preview",
         help="show models without importing them",
@@ -54,7 +63,7 @@ def _parse_model_line(line):
 
 def _parse_date(s: str, context: str):
     try:
-        return datetime.datetime.strptime(s, "%Y-%m-%dT%H-%M-%S.%f")
+        return datetime.datetime.fromisoformat(s)
     except ValueError:
         assert False, (s, context)
 
@@ -84,10 +93,15 @@ def _open_llm_import_runs():
 
 
 def _iter_stale_models(models, runs):
+    count = 0
     for model, eval_date in models:
+        if limit is not None and limit == count:
+            log.info("Reached limit of %s, stopping", limit)
+            break
         run = runs.get(model)
         if not run or _run_started_utc(run) < eval_date:
             yield model
+            count += 1
 
 
 def _run_started_utc(run):
@@ -102,7 +116,7 @@ def _import_results(model, args):
     log.info("Importing results for %s", model)
     try:
         subprocess.check_output(
-            f"gage run eval-model model='{model}' -y",
+            f"gage run import model='{model}' -y",
             shell=True,
             text=True,
             stderr=subprocess.STDOUT,
