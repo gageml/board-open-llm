@@ -165,6 +165,8 @@ def _get_model_info(args):
     try:
         resp = urllib.request.urlopen(url)
     except urllib.error.HTTPError as e:
+        if e.code in (404, 401):
+            return None
         log.error("Error getting model info from %s: %s", url, e)
         raise SystemExit(1)
     else:
@@ -205,8 +207,20 @@ def _model_summary(model_name, model_filename, eval_filenames):
 
 
 def _apply_model_info(model_name, model_filename, summary):
-    model_info = json.load(open(model_filename))
-    _apply_dict(_model_info_summary(model_info, model_name), summary)
+    if model_filename:
+        model_info = json.load(open(model_filename))
+        _apply_dict(_model_info_summary(model_info, model_name), summary)
+    else:
+        _apply_dict(_model_missing_summary(model_name), summary)
+
+
+def _model_missing_summary(model_name):
+    return {
+        "attributes": {
+            "model": model_name,
+            "is-deleted": True,
+        }
+    }
 
 
 def _model_info_summary(data, model_name):
@@ -248,7 +262,7 @@ def _apply_eval_results(model_name, eval_filenames, summary):
         results = json.load(open(eval_src))
         _apply_dict(_results_summary(results, eval_src, model_name), summary)
     _apply_dict(
-        {"attributes": {"latest-eval": _date_for_eval_src(sorted_evals[-1])}}, summary
+        {"attributes": {"last-eval": _date_for_eval_src(sorted_evals[-1])}}, summary
     )
 
 

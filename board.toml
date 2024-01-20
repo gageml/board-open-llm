@@ -1,5 +1,13 @@
+##################################################################
+# Board Settings
+##################################################################
+
 title = "Open LLM Leaderboard"
 description = "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp)."
+
+##################################################################
+# Run select and group select
+##################################################################
 
 [run-select]
 
@@ -8,8 +16,17 @@ status = "completed"
 
 [group-select]
 
+# Select latest run for model
 group-by = { attribute = "model" }
 max = { run-attr = "started" }
+
+##################################################################
+# Run attributes
+##################################################################
+
+# ----------------------------------------------------------------
+# Run ID
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -27,16 +44,30 @@ href = "https://github.com/gageml/gage"
 type = "help"
 label = "Help with Gage Runs"
 
+# ----------------------------------------------------------------
+# Operation
+# ----------------------------------------------------------------
+
 [[columns]]
 
 run-attr = "operation"
 hide = true
+filter-search = false
+
+# ----------------------------------------------------------------
+# Run Status
+# ----------------------------------------------------------------
 
 [[columns]]
 
 run-attr = "status"
 label = "Run Status"
 hide = true
+filter-search = false
+
+# ----------------------------------------------------------------
+# Model
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -48,24 +79,13 @@ href = "https://huggingface.co/$1"
 label = "Hugging Face Model Card"
 type = "model"
 
-[[columns]]
+##################################################################
+# Metrics
+##################################################################
 
-attribute = "precision"
-hide = true
-
-[[columns]]
-
-attribute = "params"
-label = "Params (B)"
-filter = "range"
-hide = true
-
-[[columns]]
-
-attribute = "is-merged"
-label = "Merged"
-type = "boolean"
-hide = true
+# ----------------------------------------------------------------
+# ARC
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -79,23 +99,27 @@ aim at emulating a human-like form of general fluid intelligence.
 """
 sort = "desc"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://arxiv.org/abs/1911.01547"
-    label = "On the Measure of Intelligence"
-    type = "paper"
+href = "https://arxiv.org/abs/1911.01547"
+label = "On the Measure of Intelligence"
+type = "paper"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://github.com/fchollet/ARC"
-    label = "Task Data"
-    type = "dataset"
+href = "https://github.com/fchollet/ARC"
+label = "Task Data"
+type = "dataset"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/sota/common-sense-reasoning-on-arc-challenge"
-    label = "State-of-the-Art"
-    type = "leaderboard"
+href = "https://paperswithcode.com/sota/common-sense-reasoning-on-arc-challenge"
+label = "State-of-the-Art"
+type = "leaderboard"
+
+# ----------------------------------------------------------------
+# HellaSwag
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -107,23 +131,27 @@ is specially hard for state-of-the-art models, though its questions
 are trivial for humans (>95% accuracy).
 """
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://arxiv.org/abs/1905.07830v1"
-    label = "HellaSwag: Can a Machine Really Finish Your Sentence?"
-    type = "paper"
+href = "https://arxiv.org/abs/1905.07830v1"
+label = "HellaSwag: Can a Machine Really Finish Your Sentence?"
+type = "paper"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/dataset/hellaswag"
-    label = "Dataset"
-    type = "dataset"
+href = "https://paperswithcode.com/dataset/hellaswag"
+label = "Dataset"
+type = "dataset"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/sota/sentence-completion-on-hellaswag"
-    label = "State-of-the-Art"
-    type = "leaderboard"
+href = "https://paperswithcode.com/sota/sentence-completion-on-hellaswag"
+label = "State-of-the-Art"
+type = "leaderboard"
+
+# ----------------------------------------------------------------
+# MMLU
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -135,29 +163,33 @@ and more. To attain high accuracy on this test, models must possess extensive
 world knowledge and problem solving ability.
 """
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://arxiv.org/abs/2009.03300"
-    label = "Measuring Massive Multitask Language Understanding"
-    type = "paper"
+href = "https://arxiv.org/abs/2009.03300"
+label = "Measuring Massive Multitask Language Understanding"
+type = "paper"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/dataset/mmlu"
-    label = "Dataset"
-    type = "dataset"
+href = "https://paperswithcode.com/dataset/mmlu"
+label = "Dataset"
+type = "dataset"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://github.com/hendrycks/test"
-    label = "Source code"
-    type = "code"
+href = "https://github.com/hendrycks/test"
+label = "Source code"
+type = "code"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu"
-    label = "State-of-the-Art"
-    type = "leaderboard"
+href = "https://paperswithcode.com/sota/multi-task-language-understanding-on-mmlu"
+label = "State-of-the-Art"
+type = "leaderboard"
+
+# ----------------------------------------------------------------
+# TruthfulQA
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -170,29 +202,33 @@ including health, law, finance and politics. The authors crafted questions that 
 humans would answer falsely due to a false belief or misconception.
 """
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://arxiv.org/abs/2109.07958"
-    label = "TruthfulQA: Measuring How Models Mimic Human Falsehoods"
-    type = "paper"
+href = "https://arxiv.org/abs/2109.07958"
+label = "TruthfulQA: Measuring How Models Mimic Human Falsehoods"
+type = "paper"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/dataset/truthfulqa"
-    label = "Dataset"
-    type = "dataset"
+href = "https://paperswithcode.com/dataset/truthfulqa"
+label = "Dataset"
+type = "dataset"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://github.com/sylinrl/TruthfulQA"
-    label = "Source code"
-    type = "code"
+href = "https://github.com/sylinrl/TruthfulQA"
+label = "Source code"
+type = "code"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/sota/question-answering-on-truthfulqa"
-    label = "State-of-the-Art"
-    type = "leaderboard"
+href = "https://paperswithcode.com/sota/question-answering-on-truthfulqa"
+label = "State-of-the-Art"
+type = "leaderboard"
+
+# ----------------------------------------------------------------
+# Winogrande
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -207,29 +243,33 @@ AfLite algorithm that generalizes human-detectable word associations to
 machine-detectable embedding associations.
 """
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://arxiv.org/abs/1907.10641"
-    label = "WinoGrande: An Adversarial Winograd Schema Challenge at Scale"
-    type = "paper"
+href = "https://arxiv.org/abs/1907.10641"
+label = "WinoGrande: An Adversarial Winograd Schema Challenge at Scale"
+type = "paper"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/dataset/winogrande"
-    label = "Dataset"
-    type = "dataset"
+href = "https://paperswithcode.com/dataset/winogrande"
+label = "Dataset"
+type = "dataset"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://github.com/allenai/winogrande"
-    label = "Source code"
-    type = "code"
+href = "https://github.com/allenai/winogrande"
+label = "Source code"
+type = "code"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/sota/common-sense-reasoning-on-winogrande"
-    label = "State-of-the-Art"
-    type = "leaderboard"
+href = "https://paperswithcode.com/sota/common-sense-reasoning-on-winogrande"
+label = "State-of-the-Art"
+type = "leaderboard"
+
+# ----------------------------------------------------------------
+# GSM8K
+# ----------------------------------------------------------------
 
 [[columns]]
 
@@ -243,26 +283,170 @@ arithmetic operations to reach the final answer. A bright middle school student
 should be able to solve every problem.
 """
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://arxiv.org/abs/2110.14168"
-    label = "Training Verifiers to Solve Math Word Problems"
-    type = "paper"
+href = "https://arxiv.org/abs/2110.14168"
+label = "Training Verifiers to Solve Math Word Problems"
+type = "paper"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/dataset/gsm8k"
-    label = "Dataset"
-    type = "dataset"
+href = "https://paperswithcode.com/dataset/gsm8k"
+label = "Dataset"
+type = "dataset"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://github.com/openai/grade-school-math"
-    label = "Source code"
-    type = "code"
+href = "https://github.com/openai/grade-school-math"
+label = "Source code"
+type = "code"
 
-    [[columns.links]]
+[[columns.links]]
 
-    href = "https://paperswithcode.com/sota/arithmetic-reasoning-on-gsm8k"
-    label = "State-of-the-Art"
-    type = "leaderboard"
+href = "https://paperswithcode.com/sota/arithmetic-reasoning-on-gsm8k"
+label = "State-of-the-Art"
+type = "leaderboard"
+
+##################################################################
+# Model attributes
+##################################################################
+
+# ----------------------------------------------------------------
+# Precision
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "precision"
+hide = true
+
+# ----------------------------------------------------------------
+# Params
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "params"
+label = "Params (B)"
+filter = "range"
+hide = true
+
+# ----------------------------------------------------------------
+# Architecture
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "architectures"
+label = "Architecture"
+hide = true
+
+# The underlying value is a list of strings. But in nearly all cases
+# there's only one entry. To present this as plural in the board when
+# it's almost always a singular topic is confusin. Until we can make
+# sense of sets of values in a cell (grouping by, filtering, etc.) let's
+# just use the singular form of the column.
+
+# ----------------------------------------------------------------
+# License
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "license"
+hide = true
+
+# ----------------------------------------------------------------
+# Model Type
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "model-type"
+hide = true
+
+# ----------------------------------------------------------------
+# Modified
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "modified"
+hide = true
+type = "dateString"
+
+# ----------------------------------------------------------------
+# Last Eval
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "last-eval"
+hide = true
+type = "dateString"
+
+# ----------------------------------------------------------------
+# Languages
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "languages"
+hide = true
+
+# ----------------------------------------------------------------
+# Downloads
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "downloads"
+hide = true
+filter = "number"
+
+# ----------------------------------------------------------------
+# Likes
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "likes"
+hide = true
+type = "number"
+
+##################################################################
+# Hub flags (hidden by default)
+##################################################################
+
+# ----------------------------------------------------------------
+# Merged
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "is-merged"
+label = "Merged"
+filter = "flag"
+hide = true
+
+# ----------------------------------------------------------------
+# MOE
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "is-moe"
+label = "MOE"
+filter = "flag"
+hide = true
+
+# ----------------------------------------------------------------
+# Deleted
+# ----------------------------------------------------------------
+
+[[columns]]
+
+attribute = "is-deleted"
+label = "Deleted"
+filter = "flag"
+hide = true

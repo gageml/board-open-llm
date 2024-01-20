@@ -20,7 +20,7 @@ def main():
     args = _parse_args()
     models = _evaluated_models()
     runs = _latest_model_runs(models)
-    for model in _iter_stale_models(models, runs):
+    for model in _iter_stale_models(models, runs, args):
         _import_results(model, args)
 
 
@@ -87,16 +87,16 @@ def _latest_model_runs(models):
 def _open_llm_import_runs():
     return gage.runs(
         filter=lambda run: (
-            run["operation"] == "eval-model" and run["status"] == "completed"
+            run["operation"] == "import" and run["status"] == "completed"
         )
     )
 
 
-def _iter_stale_models(models, runs):
+def _iter_stale_models(models, runs, args):
     count = 0
-    for model, eval_date in models:
-        if limit is not None and limit == count:
-            log.info("Reached limit of %s, stopping", limit)
+    for model, eval_date in sorted(models):
+        if args.limit is not None and args.limit == count:
+            log.info("Reached limit of %s, stopping", args.limit)
             break
         run = runs.get(model)
         if not run or _run_started_utc(run) < eval_date:
