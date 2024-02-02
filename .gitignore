@@ -4,3 +4,5 @@ summary.json
 results_*.json
 model.json
 data.json
+data.csv
+.env

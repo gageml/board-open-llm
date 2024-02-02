@@ -2,8 +2,12 @@
 # Board Settings
 ##################################################################
 
+id = "a5ae00ce-3ef0-495f-89e5-dc1707649aa6"
+name = "gar1t/open-llm"
 title = "Open LLM Leaderboard"
-description = "Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp)."
+description = """
+Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp).
+"""
 
 ##################################################################
 # Run select and group select
