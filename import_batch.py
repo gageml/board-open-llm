@@ -1,7 +1,7 @@
 import argparse
-from curses import meta
 import datetime
 import logging
+import os
 import subprocess
 
 import gage
@@ -120,6 +120,7 @@ def _import_results(model, args):
             shell=True,
             text=True,
             stderr=subprocess.STDOUT,
+            cwd=os.getenv("PARENT_PWD"),
         )
     except subprocess.CalledProcessError as e:
         log.error(e.output)

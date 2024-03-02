@@ -9,15 +9,4 @@ config = "import_results.py#model"
 
 exec = "python import_batch.py"
 description = "Import all available Open LLM model results"
-sourcecode = ["import_results.py", "import_batch.py"]
 config = ["import_batch.py#preview", "#limit"]
-
-[publish]
-
-exec = "python publish.py"
-description = "Publish board to Gage Live"
-sourcecode = ["publish.py", "board.json"]
-config = [
-    "publish.py",
-    "-#DATA_JSON"
-]

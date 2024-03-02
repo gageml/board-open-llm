@@ -3,11 +3,17 @@
 ##################################################################
 
 id = "a5ae00ce-3ef0-495f-89e5-dc1707649aa6"
-name = "gar1t/open-llm"
+
 title = "Open LLM Leaderboard"
+
 description = """
 Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp).
 """
+
+[tabs]
+
+help = "help.md"
+graphs = "graphs.md"
 
 ##################################################################
 # Run select and group select
@@ -79,7 +85,7 @@ attribute = "model"
 
 [[columns.links]]
 
-href = "https://huggingface.co/$1"
+href = "https://huggingface.co/${link}"
 label = "Hugging Face Model Card"
 type = "model"
 
