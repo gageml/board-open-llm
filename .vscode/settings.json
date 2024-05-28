@@ -2,19 +2,30 @@
   "cSpell.words": [
     "copyto",
     "dtype",
+    "Eang",
     "evals",
     "hellaswag",
     "hendrycks",
     "Leaderboard",
     "levelname",
+    "Marcoro",
     "mmlu",
     "nuon",
     "pprint",
     "RCLONE",
     "safetensors",
     "scandir",
+    "slerp",
     "truthfulqa",
     "winogrande"
   ],
-  "git.ignoreLimitWarning": true
+  "git.ignoreLimitWarning": true,
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "board.json"
+      ],
+      "url": "/board.schema.json"
+    }
+  ]
 }

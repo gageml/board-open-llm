@@ -1,0 +1,46 @@
+{
+  "id": "25f4a3bf-ad26-4e74-a403-10d2ad6f4dcb",
+  "group-column": { "label": "Model" },
+  "columns": [
+    {
+      "config": "model",
+      "label": "Model",
+      "row-group": true
+    },
+    {
+      "attribute": "eval_date",
+      "label": "Eval Date",
+      "row-group": true
+    },
+    {
+      "metric": "arc",
+      "label": "ARC",
+      "agg": "last-val"
+    },
+    {
+      "metric": "hellaswag",
+      "label": "HellaSwag",
+      "agg": "last-val"
+    },
+    {
+      "metric": "mmlu",
+      "label": "MMLU",
+      "agg": "last-val"
+    },
+    {
+      "metric": "truthfulqa",
+      "label": "TruthfulQA",
+      "agg": "last-val"
+    },
+    {
+      "metric": "winogrande",
+      "label": "Winogrande",
+      "agg": "last-val"
+    },
+    {
+      "metric": "gsm8k",
+      "label": "GSM8K",
+      "agg": "last-val"
+    }
+  ]
+}

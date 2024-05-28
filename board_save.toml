@@ -2,15 +2,15 @@
 # Board Settings
 ##################################################################
 
-id = "a5ae00ce-3ef0-495f-89e5-dc1707649aa6"
-
+id = "25f4a3bf-ad26-4e74-a403-10d2ad6f4dcb"
 title = "Open LLM Leaderboard"
-
 description = """
 Imported results from [Open LLM Leaderboard](http://tinyurl.com/2l5uspcp).
 """
 
 [tabs]
+
+# This is just a demo/brainstorm - not actually supported.
 
 help = "help.md"
 graphs = "graphs.md"
@@ -25,6 +25,9 @@ operation = "import"
 status = "completed"
 
 [group-select]
+
+# TODO: Consider a respelling of this with key and select - it's
+# wonky/pedantic I think (garrett)
 
 # Select latest run for model
 group-by = { attribute = "model" }
@@ -85,7 +88,8 @@ attribute = "model"
 
 [[columns.links]]
 
-href = "https://huggingface.co/${link}"
+# href = "https://huggingface.co/${link}"
+href = "https://huggingface.co/$1"
 label = "Hugging Face Model Card"
 type = "model"
 

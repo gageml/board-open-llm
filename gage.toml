@@ -1,12 +1,8 @@
 [import]
 
-exec = "python import_results.py --data-path ."
-description = "Import model results from the Open LLM Leaderboard"
-sourcecode = ["import_results.py"]
-config = "import_results.py#model"
-
-[batch]
-
-exec = "python import_batch.py"
-description = "Import all available Open LLM model results"
-config = ["import_batch.py#preview", "#limit"]
+description = "Import model evaluation results"
+exec = "python import.py"
+config = "import.py"
+sourcecode = ["-**/.* dir", "import.py", "_util.py"]
+listing.description = ["model", "eval"]
+output-summary = "Summarizing results\\n(.*)"
